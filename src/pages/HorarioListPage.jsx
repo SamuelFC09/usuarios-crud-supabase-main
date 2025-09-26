@@ -14,7 +14,7 @@ const HorarioListPage = () => {
         const { data, error } = await supabase
             .from("horarios")
             .select()
-            .order('hora_ingreso', { ascending: true });
+            .order('id', { ascending: true });
 
         if (error) {
             console.error('Error fetching horarios:', error);
