@@ -22,12 +22,12 @@ const CreateCargoPage = () => {
     const handleSubmit = (cargoData) => {
         console.log('Creating cargo:', cargoData);
         createCargo(cargoData);
-        navigate('/cargos');
+        navigate('/cargos'); // Redirige a la lista después de crear
     };
 
     return (
         <div className="page-container">
-            <h1>Crear Nuevo Cargo</h1>
+            <h1>Registrar Nuevo Cargo</h1>
             <CargoForm onSubmit={handleSubmit} isEditing={false} />
         </div>
     );

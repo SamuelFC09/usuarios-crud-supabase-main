@@ -14,7 +14,7 @@ const CargoListPage = () => {
         const { data, error } = await supabase
             .from("cargos")
             .select()
-            .order('cargo', { ascending: true });
+            .order('id', { ascending: true});
 
         if (error) {
             console.error('Error fetching cargos:', error);
@@ -22,12 +22,11 @@ const CargoListPage = () => {
         }
         setCargos(data || []);
         setLoading(false);
-        console.log('Cargos:', data);
     }
 
     return (
         <div className="page-container">
-            <h1>Gestión de Cargos</h1>
+            <h1>Lista de Cargos Registrados</h1>
             <CargoList cargos={cargos} loading={loading} />
         </div>
     );

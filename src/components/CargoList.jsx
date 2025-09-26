@@ -1,20 +1,20 @@
-import { Link } from 'react-router-dom';
 import CargoItem from './CargoItem';
 
 const CargoList = ({ cargos, loading }) => {
-    if (loading) return <div className="loading">Cargando cargos...</div>;
+    if (loading) return <div className="loading">Cargando lista de cargos...</div>;
 
     return (
         <div className="cargo-page">
             <div className="cargo-header">
-                <h2>Lista de Cargos ({cargos.length})</h2>
-                <Link to="/cargos/create" className="btn btn-primary">
-                    Crear Cargo
-                </Link>
+                <h2>Cargos Registrados en el Sistema ({cargos.length})</h2>
+                {/* QUITADO: El botón de crear cargo */}
             </div>
             <div className="cargo-list">
                 {cargos.length === 0 ? (
-                    <p>No hay cargos disponibles.</p>
+                    <div className="no-data">
+                        <p>No hay cargos registrados en el sistema.</p>
+                        <p>Para agregar cargos, usa la opción "Crear Cargo" en el menú superior.</p>
+                    </div>
                 ) : (
                     cargos.map((cargo) => (
                         <CargoItem key={cargo.id} cargo={cargo} />

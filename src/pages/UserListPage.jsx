@@ -12,13 +12,16 @@ useEffect(() => {
 }, [])
 
 async function getUsuarios() {
-  const {data,error} = await supabase.from("usuarios").select();
-  if(error){
-    console.error(error);
-    return;
-  }
-  setUsuarios(data);
-  console.log(data);
+    const { data, error } = await supabase
+        .from("usuarios")
+        .select('*')
+        .order('id', { ascending:true}); 
+
+    if (error) {
+        console.error('Error fetching usuarios:', error);
+        return;
+    }
+    setUsuarios(data || []);
 }
 
 return (
